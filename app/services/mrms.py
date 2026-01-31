@@ -306,11 +306,9 @@ class MRMSService:
         for product_key in self.HTTP_PRODUCTS.keys():
             url = await self._find_nearest_http_file(product_key, target_time, base_source="archive")
             if url:
-                print(f"MRMS archive URL for {product_key}: {url}")
                 data = await self.download_and_parse_grib_http(url)
                 result[product_key] = data
             else:
-                print(f"MRMS archive URL not found for {product_key} near {target_time.isoformat()}")
                 result[product_key] = None
         return result
 

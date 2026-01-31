@@ -71,3 +71,31 @@ Frontend runs at: `http://localhost:8080`
 - Daily station totals can be missing for same‑day; fallback uses most recent available daily value.
 - Full reports can take a few minutes (forecasts are the slowest step).
 
+---
+
+## Demo Script (2–4 minutes)
+
+1) **Start backend**
+```bash
+cd mta-flood-api
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+2) **Start frontend**
+```bash
+cd mta-flood-api/frontend
+npm run dev
+```
+
+3) **In the UI**
+- Pick today’s date and a time
+- Select a borough (e.g., Bronx)
+- Click **Generate Excel**
+- Open the file and show:
+  - Station fields, precipitation, tide, daily CP/JFK/LGA totals
+  - Risk Level + Risk Reason
+
+4) **Historical example**
+```
+curl "http://127.0.0.1:8000/api/report?format=xlsx&date=2021-08-31&time=22:00" -o ida.xlsx
+``

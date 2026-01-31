@@ -27,7 +27,6 @@ import {
 import { stationsByBorough, boroughs, allStations, type Borough, type StationInfo } from "@/data/stations";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
-import mtaLogo from "@/assets/mta-logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Create a unique key for each station (name + trains combo)
@@ -262,14 +261,12 @@ const Index = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <header className="mb-10 text-center">
-          <img 
-            src={mtaLogo} 
-            alt="MTA Logo" 
-            className="h-20 w-20 mx-auto mb-4"
-          />
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground whitespace-nowrap">
-            MTA Rainfall Tracker
+            MTA Rainfall API
           </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Generate station-level Excel reports by date, time, and location.
+          </p>
         </header>
 
         {/* Main Content */}
@@ -279,9 +276,9 @@ const Index = () => {
             <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
               Date
             </label>
-            <p className="text-xs text-muted-foreground">
-              NOTE: Some dates (especially over 1 year ago) may not have any precipitation data availabile.
-            </p>
+              <p className="text-xs text-muted-foreground">
+                Historical data available from Jan 1, 2021 to today.
+              </p>
             <Popover>
               <PopoverTrigger asChild>
                 <Button

@@ -185,14 +185,9 @@ class Stage4Service:
 
         file_date, filename = nearest
         source_url = f"{self._archive_dirs(file_date)[0]}{filename}"
-        print(f"Stage IV file selected for {target_time.isoformat()}: {filename}")
         data = await self._download_and_parse(file_date, filename)
         if data is None:
             raise RuntimeError("Stage IV file download/parse failed")
-        try:
-            print(f"Stage IV data stats: min={np.nanmin(data):.3f}, max={np.nanmax(data):.3f}")
-        except Exception:
-            pass
 
         lats, lons = self._grid_cache.get("stage4", (None, None))
         if lats is None or lons is None:

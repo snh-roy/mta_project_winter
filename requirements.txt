@@ -8,5 +8,5 @@ pydantic>=2.5.0
 pydantic-settings>=2.1.0
 python-dotenv>=1.0.0
 pygrib>=2.1.4
-numpy>=1.26.0
+numpy<2
 aiofiles>=23.2.1

@@ -75,6 +75,9 @@ async def _fetch_forecasts_for_stations(stations_df):
 async def startup_event():
     """Load station data on startup."""
     await stations_service.load_stations()
+    missing = settings.validate_required()
+    if missing:
+        raise RuntimeError(f"Missing required config: {', '.join(missing)}")
 
 
 @app.get("/")

@@ -73,6 +73,14 @@ class Settings(BaseSettings):
         env_file = ".env"
         env_file_encoding = "utf-8"
 
+    def validate_required(self) -> list[str]:
+        missing = []
+        if not self.ncei_cdo_token:
+            missing.append("NCEI_CDO_TOKEN")
+        if not self.eccodes_definition_path or not self.eccodes_samples_path:
+            missing.append("ECCODES_DEFINITION_PATH / ECCODES_SAMPLES_PATH")
+        return missing
+
 
 # Coastal stations that should have tide data applied
 COASTAL_STATIONS = [
